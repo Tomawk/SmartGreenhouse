@@ -1,0 +1,91 @@
+comandi_final?
+
+🔸️MYSQL COMMANDS
+
+sudo systemctl status mysql //check server status
+mysql-workbench //open the mysql workbench
+
+🔸️START INTELLIJ IDEA
+
+cd /Documents/idea-IU-222.4345.14/bin
+./idea.sh
+
+
+❗️COOJA NETWORK
+
+🔸️START BORDER ROUTER
+
+contikier
+cd examples/rpl-border-router/
+make TARGET=cooja connect-router-cooja
+
+🔸️START COOJA APPLICATION
+
+contikier
+cd tools/cooja/
+ant run
+
+❗️TESTBED CONNECTION //id assegnati 9 e 14 | sul 9 metto il client sul 14 metto il border router
+
+scp -r -P 2009 -i keys/key mqtt-lab-testbed/ user@iot.dii.unipi.it:~ //to copy a directory to the testbed
+ssh -i keys/key -p 2009 user@iot.dii.unipi.it //connect to 9 id testbed ⛔️
+ssh -i keys/key -p 2003 user@iot.dii.unipi.it //connect to 3 id testbed ⚠️
+ssh -i keys/key -p 2014 user@iot.dii.unipi.it //connect to 14 id testbed ✔️
+mv filename contiki-ng/examples //move directory filename to examples 
+
+⚠️INSERT THIS LINE TO project-conf.h
+
+#define IEEE802154_CONF_PANID 0x00XX //in our case id = 09 or 03
+
+▪️FLASH THE CODE
+
+make TARGET=nrf52840 BOARD=dongle tmp_sensor.dfu-upload PORT=/dev/ttyACM9 🔥️
+make TARGET=nrf52840 BOARD=dongle humidity-sensor.dfu-upload PORT=/dev/ttyACM3 💧️
+
+▪️LOGIN COMMAND
+
+make TARGET=nrf52840 BOARD=dongle login PORT=/dev/ttyACM9 🔥️
+make TARGET=nrf52840 BOARD=dongle login PORT=/dev/ttyACM3 💧️
+
+ON THE OTHER NODE OF THE TESTBED(14) I NEED TO 
+
+cd contiki-ng/examples/rpl-border-router
+make TARGET=nrf52840 BOARD=dongle border-router.dfu-upload PORT=/dev/ttyACM14
+make TARGET=nrf52840 BOARD=dongle connect-router PORT=/dev/ttyACM14
+
+✔️ CHANGE MOSQUITO CONF FILE (ALREADY DONE) INSIDE TESTBED14 
+
+sudo vim /etc/mosquitto/mosquitto.conf
+
+✔️ WITH THESE LINES
+
+allow_anonymous true
+listener 1883 fd00::1
+
+❗️RUN MOSQUITO BROKER
+
+sudo mosquitto -c /etc/mosquitto/mosquitto.conf
+
+NOW OPEN A NEW TERMINAL AND TRY MOSQUITO PUB AND SUB (connect to testbed14 first)
+
+💧️ HUMIDIFIER:
+
+mosquitto_pub -h fd00::1 -t humidifier_act -m ON_HUM
+mosquitto_pub -h fd00::1 -t humidifier_act -m ON_DEH
+mosquitto_pub -h fd00::1 -t humidifier_act -m OFF
+mosquitto_sub -h fd00::1 -t humidity_s
+
+🔥️ TEMPERATURE:
+
+mosquitto_pub -h fd00::1 -t actuator -m ON_HEA
+mosquitto_pub -h fd00::1 -t actuator -m ON_REF
+mosquitto_pub -h fd00::1 -t actuator -m OFF
+mosquitto_sub -h fd00::1 -t temperature
+
+👷‍♂️️ COMANDO MAGICO
+sudo systemctl stop mosquitto.service
+sudo ssh -L 1883:127.0.0.1:1883 -p 2014 -i keys/key user@iot.dii.unipi.it //not working
+sudo ssh -L 1883:[fd00::1]:1883 -p 2014 -i keys/key user@iot.dii.unipi.it
+
+
+

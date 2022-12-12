@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="it.unipi.dii.inginf.iot.smartgreenhouse.config.ConfigurationParameters">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="databaseIp" type="xs:string"/>
+				<xs:element name="databasePort" type="xs:int"/>
+				<xs:element name="databaseUsername" type="xs:string"/>
+				<xs:element name="databasePassword" type="xs:string"/>
+				<xs:element name="databaseName" type="xs:string"/>
+				<xs:element name="highBoundSoilPH" type="xs:float"/>
+				<xs:element name="lowBoundSoilPH" type="xs:float"/>
+				<xs:element name="highBoundMoisture" type="xs:float"/>
+				<xs:element name="lowBoundMoisture" type="xs:float"/>
+				<xs:element name="highBoundHumidity" type="xs:int"/>
+				<xs:element name="lowBoundHumidity" type="xs:int"/>
+				<xs:element name="highBoundTemperature" type="xs:int"/>
+				<xs:element name="lowBoundTemperature" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+</xs:schema>

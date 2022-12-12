@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<it.unipi.dii.inginf.iot.smartgreenhouse.config.ConfigurationParameters>
+	<databaseIp>localhost</databaseIp>
+	<databasePort>3306</databasePort>
+	<databaseUsername>root</databaseUsername>
+	<databasePassword>root</databasePassword>
+	<databaseName>greenhousedb</databaseName>
+	<highBoundSoilPH>10</highBoundSoilPH>
+	<lowBoundSoilPH>6</lowBoundSoilPH>
+	<highBoundMoisture>1.7</highBoundMoisture>
+	<lowBoundMoisture>1.3</lowBoundMoisture>
+	<highBoundHumidity>65</highBoundHumidity>
+	<lowBoundHumidity>35</lowBoundHumidity>
+	<highBoundTemperature>35</highBoundTemperature>
+	<lowBoundTemperature>10</lowBoundTemperature>
+</it.unipi.dii.inginf.iot.smartgreenhouse.config.ConfigurationParameters>

@@ -1,0 +1,16 @@
+[HUMIDITY] Humidity percentage is too low (31%), automatically turning on the Humidifier!
+[HUMIDITY] Sending ON_HUM message on the topic humidifier_act . . . 
+[deliveryComplete] Message Delivered Correctly
+[TEMPERATURE] Temperature is in the correct range: 21°C
+[HUMIDITY] Humidity percentage is in the correct range (36%), turning off humidifier/dehumidifier
+[HUMIDITY] Sending OFF message on the topic humidifier_act . . . 
+[deliveryComplete] Message Delivered Correctly
+[TEMPERATURE] Temperature is in the correct range: 22°C
+[HUMIDITY] Humidity percentage is too low (34%), automatically turning on the Humidifier!
+[HUMIDITY] Sending ON_HUM message on the topic humidifier_act . . . 
+[deliveryComplete] Message Delivered Correctly
+[TEMPERATURE] Temperature is in the correct range: 20°C
+[HUMIDITY] Humidity percentage is in the correct range (42%), turning off humidifier/dehumidifier
+[HUMIDITY] Sending OFF message on the topic humidifier_act . . . 
+[deliveryComplete] Message Delivered Correctly
+[TEMPERATURE] Temperature is in the correct range: 19°C
