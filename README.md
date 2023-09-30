@@ -11,5 +11,5 @@ This is achieved by using sensors and actuators. The application can automatical
 
 Data from the sensors are collected and then stored in a MySQL database.
 
-Documentation -> [link]()  
-Powerpoint Presentation -> [link]()
+Documentation -> [link](https://github.com/Tomawk/SmartGreenhouse/blob/master/Smart_Greenhouse.pdf)  
+Powerpoint Presentation -> [link](https://github.com/Tomawk/SmartGreenhouse/blob/master/SmartGreenHouse_presentation.pptx)
